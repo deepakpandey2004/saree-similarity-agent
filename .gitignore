@@ -1,0 +1,30 @@
+# Virtual env
+venv/
+env/
+
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data (large files - won't push to GitHub)
+data/images/
+data/chroma_db/
+*.xlsx
+*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
