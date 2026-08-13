@@ -4,8 +4,7 @@ An AI-powered chatbot that finds visually similar sarees from a fashion catalog 
 
 ## 🎯 Live Demo
 
-- **App URL:** [https://huggingface.co/spaces/YOUR_USERNAME/saree-similarity-agent](#) *(update after deployment)*
-- **GitHub:** [https://github.com/YOUR_USERNAME/saree-similarity-agent](#)
+- **App URL:** [https://huggingface.co/spaces/YOUR_USERNAME/saree-similarity-agent](#)
 
 ## ✨ Features
 
