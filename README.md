@@ -4,7 +4,7 @@ An AI-powered chatbot that finds visually similar sarees from a fashion catalog 
 
 ## 🎯 Live Demo
 
-- **App URL:** https://saree-similarity-agent-imkvio52yowcabyfgum6bz.streamlit.app/
+- **App URL:** [https://saree-similarity-agent-imkvio52yowcabyfgum6bz.streamlit.app](https://saree-similarity-agent-imkvio52yowcabyfgum6bz.streamlit.app)
 
 ## ✨ Features
 
