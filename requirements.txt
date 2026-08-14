@@ -11,14 +11,13 @@ langchain-community==0.3.5
 # Vector DB
 chromadb==0.5.18
 
-# Embeddings - Fashion CLIP
+# Embeddings - Fashion CLIP (via HuggingFace transformers)
 torch==2.2.2
 torchvision==0.17.2
 transformers==4.44.2
 pillow==10.4.0
-open-clip-torch==2.24.0
 
-# Image Processing (color + texture features)
+# Image Processing
 opencv-python-headless==4.10.0.84
 scikit-image==0.24.0
 numpy==1.26.4
@@ -28,4 +27,3 @@ scipy==1.13.1
 pandas==2.2.3
 tqdm==4.66.5
 requests==2.32.3
-openpyxl==3.1.5
