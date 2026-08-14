@@ -6,6 +6,7 @@ Features:
 - Image upload (file) or URL input
 - Beautiful results display with images side-by-side
 - Score breakdown for transparency
+- Cross-platform image path resolution (works on Windows + Linux)
 """
 import streamlit as st
 from PIL import Image
@@ -13,6 +14,7 @@ import requests
 from io import BytesIO
 import os
 import re
+from pathlib import Path
 
 from src.agent import get_agent
 from src.search_engine import get_search_engine
@@ -98,6 +100,19 @@ def load_image_from_url(url: str) -> Image.Image:
         return Image.open(BytesIO(img_response.content)).convert("RGB")
 
     raise ValueError("Could not find an image at the given URL. Please provide a direct image URL.")
+
+
+def resolve_image_path(sku: str) -> str:
+    """
+    Build image path from SKU. Works cross-platform (Windows + Linux).
+    Tries multiple extensions.
+    """
+    images_dir = Path("data/images")
+    for ext in ['webp', 'jpg', 'jpeg', 'png']:
+        candidate = images_dir / f"{sku}.{ext}"
+        if candidate.exists():
+            return str(candidate)
+    return None
 
 
 # ==================== SESSION STATE ====================
@@ -188,7 +203,7 @@ with col_chat:
 
                 # Cache results for visual display if user asked for similarity
                 if st.session_state.current_image is not None:
-                    search_keywords = ["similar", "find", "match", "like this", "search", "show me"]
+                    search_keywords = ["similar", "find", "match", "like this", "search", "show me", "simiar", "simar"]
                     if any(kw in user_input.lower() for kw in search_keywords):
                         engine = get_search_engine()
                         results = engine.search(st.session_state.current_image, top_k=5)
@@ -213,8 +228,12 @@ with col_results:
                 with st.container(border=True):
                     cols = st.columns([1, 2])
                     with cols[0]:
-                        if os.path.exists(r["image_path"]):
-                            st.image(r["image_path"])
+                        # Build path dynamically from SKU (cross-platform)
+                        image_path = resolve_image_path(r['sku'])
+                        if image_path:
+                            st.image(image_path)
+                        else:
+                            st.caption("🖼️ Image not available")
                     with cols[1]:
                         st.markdown(f"**#{i} · {r['name'][:50]}**")
                         st.markdown(
