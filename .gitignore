@@ -12,8 +12,6 @@ __pycache__/
 .pytest_cache/
 
 # Data (large files - won't push to GitHub)
-data/images/
-data/chroma_db/
 *.xlsx
 *.csv
 
@@ -28,3 +26,4 @@ Thumbs.db
 
 # Streamlit
 .streamlit/secrets.toml
+
